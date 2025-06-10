@@ -1,0 +1,24 @@
+# Install the library if you haven't already
+!pip install -U sentence-transformers
+
+from sentence_transformers import SentenceTransformer
+
+# Example sentences
+sentences = [
+    "Generative AI is transforming industries.",
+    "Language models can generate human-like text.",
+    "Sentence embeddings capture the meaning of sentences.",
+    "Fine-tuning improves model performance.",
+    "Prompt engineering guides the model without retraining."
+]
+
+# Load a pre-trained Sentence-BERT model
+model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
+
+# Generate embeddings
+embeddings = model.encode(sentences)
+
+# Display the embeddings
+for sentence, embedding in zip(sentences, embeddings):
+    print(f"Sentence: {sentence}")
+    print(f"Embedding: {embedding[:5]}... (truncated)\n")  # Show only first 5 values for brevity
